@@ -1,0 +1,72 @@
+{
+  "request_id": "request-ransomware-baseline",
+  "scenario": {
+    "schema_version": "1.0",
+    "scenario_id": "scn-ransomware-payments",
+    "title": "Synthetic ransomware event against payments API",
+    "asset_id": "asset-payments-api",
+    "threat_event": "Synthetic ransomware execution",
+    "loss_unit": "synthetic-usd",
+    "source_class": "synthetic",
+    "factors": [
+      {
+        "schema_version": "1.0",
+        "factor_id": "frequency-range",
+        "metric": "annual event frequency",
+        "unit": "events-per-year",
+        "distribution": "triangular",
+        "lower": "0.1",
+        "central": "0.3",
+        "upper": "0.8",
+        "source_class": "synthetic",
+        "confidence": "low",
+        "rationale": "Sealed synthetic fixture assumption."
+      },
+      {
+        "schema_version": "1.0",
+        "factor_id": "recovery-range",
+        "metric": "recovery loss component",
+        "unit": "synthetic-usd",
+        "distribution": "pert",
+        "lower": "10000",
+        "central": "25000",
+        "upper": "50000",
+        "source_class": "synthetic",
+        "confidence": "low",
+        "rationale": "Sealed synthetic fixture assumption."
+      }
+    ],
+    "loss_components": [
+      {
+        "schema_version": "1.0",
+        "component_id": "loss-recovery",
+        "label": "Synthetic recovery component",
+        "unit": "synthetic-usd",
+        "factor_ids": [
+          "recovery-range"
+        ],
+        "rationale": "Exercises linkage only."
+      }
+    ],
+    "evidence_references": [
+      {
+        "schema_version": "1.0",
+        "evidence_id": "evidence-synthetic-control-gap",
+        "source_class": "synthetic",
+        "integrity_hash": "7f9b8c2b4b452be484fe4ecf7f8d08ed6a9ca2f80d29c1238ccce47f4e2343a4",
+        "description": "Synthetic payload-blind evidence reference.",
+        "expires_on": "2099-12-31"
+      }
+    ],
+    "completeness_note": "Synthetic fixture; no input is a real-world observation or forecast."
+  },
+  "frequency_factor_id": "frequency-range",
+  "loss_factor_ids": [
+    "recovery-range"
+  ],
+  "deterministic_seed": 20260823,
+  "sample_count": 1000,
+  "model_version": "0.1.0",
+  "completeness_status": "partial",
+  "limitations": "Synthetic demonstration only; no result is a forecast, real estimate, or decision."
+}
